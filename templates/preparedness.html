@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Preparedness | Disaster Management</title>
+  <!-- <link rel="stylesheet" href="static/preparedness.css" /> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='preparedness.css') }}">
+  
+</head>
+<body>
+  <!-- Using url_for -->
+<nav class="navbar">
+  <div class="logo">🛟 ResQNow</div>
+  <ul class="nav-links">
+    <li><a href="{{ url_for('home') }}">Home</a></li>
+    <li><a href="{{ url_for('mitigation') }}">Mitigation</a></li>
+    <li><a href="{{ url_for('preparedness') }}" class="active">Preparedness</a></li>
+    <li><a href="{{ url_for('blogs') }}">Blogs</a></li>
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+  </ul>
+</nav>
+
+  <div class="container">
+    <h1>🏠 Disaster Preparedness Predictor</h1>
+
+    <form id="prepForm">
+      <label for="state">State</label>
+      <select id="state" required></select>
+
+      <label for="disaster_type">Disaster Type</label>
+      <select id="disaster_type" required></select>
+
+      <label for="household_size">Household Size</label>
+      <input type="number" id="household_size" min="1" value="3" required />
+
+      <label for="has_kit">Do you own a disaster kit?</label>
+      <input type="checkbox" id="has_kit" />
+
+      <div id="checklistContainer" class="checklist"></div>
+
+      <button type="submit">🔍 Predict Preparedness</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='preparedness.js') }}"></script>
+</body>
+</html>
